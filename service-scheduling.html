@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="serviceScheduling.css">
+    <title>Agendamento de Serviços - PetShop</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imgs/logo.png" alt="Logo PetShop">
+            <h1>Animal Care PetShop</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="singup.html">Cadastre-se</a>
+            <a href="pet-register.html">Registrar Pet</a>
+            <a href="service.html">Serviços</a>
+            <a href="service-scheduling.html">Agendamento</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Agende um serviço</h2>
+            <form id="schedulingForm">
+                <div>
+                    <label for="petName">Nome do Pet</label>
+                    <input type="text" id="petName" placeholder="Digite o nome do Pet" required>
+                </div>
+                <div>
+                    <label for="ownerName">Nome do dono</label>
+                    <input type="text" id="ownerName" placeholder="Digite o nome do dono do Pet" required>
+                </div>
+                <div>
+                    <label for="serviceType">Tipos de serviço</label>
+                    <select id="serviceType">
+                        <option value="" disabled selected>Selecione o tipo de serviço</option>
+                        <option value="banhoTosa">Banho</option>
+                        <option value="consultaVet">Consulta Veterinária</option>
+                        <option value="tosa">Tosa</option>
+                        <option value="hospedagem">Hospedagem</option>
+                    </select>   
+                </div>
+                <div>
+                    <label for="serviceDate">Data de <acronym title=""></acronym>gendamento</label>
+                    <input type="date" id="serviceDate" placeholder="Escolha a data do agendamento" required>
+                </div>
+                <div>
+                    <label for="serviceTime">Horário do agendamento</label>
+                    <input type="time" id="serviceTime" placeholder="Escolha o horário do agendamento" required>
+                </div>
+                <button type="submit">Agendar serviço</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const schedulingForm = document.getElementById("schedulingForm");
+
+   schedulingForm.addEventListener("submit", async (event) => {
+       event.preventDefault();
+
+       const petName = document.getElementById("petName").value;
+       const ownerName = document.getElementById("ownerName").value;
+       const serviceType = document.getElementById("serviceType").value;
+       const serviceDate = document.getElementById("serviceDate").value;
+       const serviceTime = document.getElementById("serviceTime").value;
+
+
+
+       try {
+           const response = await fetch("http://localhost:8080/api/login", {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify({ petName, ownerName, serviceType, serviceDate, serviceTime })
+               });
+
+               if (response.ok) {
+                   alert("Login bem-sucedido!");
+                   window.location.href = "./index";
+               } else {
+                   alert("E-mail ou senha incorretos. Tente novamente.");
+               }
+               } catch (error) {
+                   console.error("Erro ao conectar ao servidor:", error);
+                   alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+               }
+           });
+       });
+
+   </script>
+</body>
+</html>

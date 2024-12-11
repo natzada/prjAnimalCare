@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="service.css">
+    <title>Registrar Serviço</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="imgs/logo.png" alt="Logo PetShop">
+            <h1>Animal Care PetShop</h1>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="singup.html">Cadastre-se</a>
+            <a href="pet-register.html">Registrar Pet</a>
+            <a href="service.html">Serviços</a>
+            <a href="service-scheduling.html">Agendamento</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Cadastrar Serviço</h2>
+            <form id="serviceForm">
+                <div>
+                    <label for="serviceName">Nome do serviço:</label>
+                    <input type="text" id="serviceName" placeholder="Digite o nome do serviço desejado" required>
+                </div>
+                <div>
+                    <label for="serviceDescribe">Descrição do serviço</label>
+                    <textarea  id="serviceDescribe" placeholder="Descreva o serviço que deseja que seja feito" cols="30" rows="4"></textarea required>
+                </div>
+                <div>
+                    <label for="servicePrice">Valor do serviço</label>
+                    <input type="number" id="servicePrice" placeholder="Digite o valor do serviço" step="0.01">
+                </div>
+                <button type="submit">Cadastrar Serviço</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const serviceForm = document.getElementById("serviceForm");
+
+   serviceForm.addEventListener("submit", async (event) => {
+       event.preventDefault();
+
+       const serviceName = document.getElementById("serviceName").value;
+       const serviceDescribe = document.getElementById("serviceDescribe").value;
+       const servicePrice = document.getElementById("servicePrice").value;
+
+
+       try {
+           const response = await fetch("http://localhost:8080/api/login", {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify({ serviceName, serviceDescribe, servicePrice })
+               });
+
+               if (response.ok) {
+                   alert("Login bem-sucedido!");
+                   window.location.href = "./index";
+               } else {
+                   alert("E-mail ou senha incorretos. Tente novamente.");
+               }
+               } catch (error) {
+                   console.error("Erro ao conectar ao servidor:", error);
+                   alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+               }
+           });
+       });
+
+   </script>
+</body>
+</html>

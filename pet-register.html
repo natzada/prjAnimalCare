@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="petRegister.css">
+    <title>Registrar Pet</title>
+</head>
+<body>
+    <header>
+       <div class="logo">
+           <img src="imgs/logo.png" alt="Logo PetShop">
+           <h1>Animal Care PetShop</h1>
+       </div>
+       <nav>
+           <a href="index.html">Home</a>
+           <a href="login.html">Login</a>
+           <a href="singup.html">Cadastre-se</a>
+           <a href="pet-register.html">Registrar Pet</a>
+           <a href="service.html">Serviços</a>
+           <a href="service-scheduling.html">Agendamento</a>
+       </nav>
+    </header>
+
+    ,
+    <main>
+        <section>
+            <h2>Cadastre seu Pet</h2>
+            <form id="petRegister">
+                <div>
+                    <label for="petName">Nome do Pet:</label>
+                    <input type="text" id="petName" required placeholder="Digite o nome do seu pet.">
+                </div>
+                    <div>
+                       <label for="petType">Espécie</label>
+                       <select id="petType" required>
+                           <option value="" disabled selected>Selecione a espécie</option>
+                           <option value="Cachorro">Cachorro</option>
+                           <option value="Gato">Gato</option>
+                           <option value="Aves">Aves</option>
+                           <option value="Peixe">Peixe</option>
+                       </select>
+                   </div>
+                   <div>
+                    <label for="petAge">Idade do Pet (Em anos)</label>
+                    <input type="number" id="petAge" placeholder="Digite a idade do Pet" required>
+                   </div>
+                   <div>
+                    <label for="petWeight">Peso do Pet (Em kg)</label>
+                    <input type="number" id="petWeight" placeholder="Digite o peso do Pet" required>
+                   </div>
+
+                   <button type="submit">Registrar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PetShop - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+   const petRegister = document.getElementById("petRegister");
+
+   petRegister.addEventListener("submit", async (event) => {
+       event.preventDefault();
+
+       const nomePet = document.getElementById("petName").value;
+       const especiePet = document.getElementById("petType").value;
+       const idadePet = document.getElementById("petAge").value;
+       const pesoPet = document.getElementById("petWeight").value;
+
+
+       try {
+           const response = await fetch("http://localhost:8080/api/login", {
+               method: "POST",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+               body: JSON.stringify({ nomePet, especiePet, idadePet, pesoPet })
+               });
+
+               if (response.ok) {
+                   alert("Login bem-sucedido!");
+                   window.location.href = "./index";
+               } else {
+                   alert("E-mail ou senha incorretos. Tente novamente.");
+               }
+               } catch (error) {
+                   console.error("Erro ao conectar ao servidor:", error);
+                   alert("Erro ao conectar ao servidor. Tente novamente mais tarde.");
+               }
+           });
+       });
+
+
+   </script>
+</body>
+</html>

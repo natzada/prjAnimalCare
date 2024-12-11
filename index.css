@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff6ec;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #670C0C;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #e07902;
+    -webkit-text-stroke: 0.5px #000;
+    font-family: 'Chewy', sans-serif;
+}
+
+.logo img {
+    height: 100px;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: #d1cfcf;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+nav a:hover {
+    color: white;
+}
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar img {
+    width: 20px;
+    height: auto;
+    margin: 0 5px;
+}
+
+.search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 70%;
+}
+
+.search-bar button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.search-bar button:hover {
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.carousel {
+    margin-left: 0;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;  /* Largura máxima ajustada */
+    height: 320px;  /* Altura ajustada */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    height: 28px;  /* Altura ajustada */
+}
+
+.slide {
+    min-width: 100%;
+    transition: 0.5s ease;
+}
+
+.slide img {
+    min-width: 1200px;  /* Largura máxima ajustada */
+    height: 320px;  /* Altura ajustada */
+    object-fit: cover;
+}
+
+.prev, .next { 
+    cursor: pointer; 
+    position: absolute; 
+    top: 50%; 
+    width: 50px; /* largura da seta */ 
+    height: 50px; /* altura da seta */ 
+    margin-top: -25px; /* metade da altura para centralizar verticalmente */ 
+    background-color: rgba(0, 0, 0, 0.5); /* cor de fundo da seta */ 
+    color: white; 
+    font-weight: bold; 
+    font-size: 24px; 
+    border: none; 
+    border-radius: 50%; /* formato arredondado */ 
+    transition: 0.3s; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    user-select: none; 
+    z-index: 1; 
+} 
+
+.next { 
+    right: 20px; /* posicionamento da seta next */ 
+} 
+
+.prev { 
+    left: 20px; /* posicionamento da seta prev */ 
+} 
+
+.prev:hover, .next:hover { 
+    background-color: rgba(0, 0, 0, 0.8); /* cor de fundo ao passar o mouse */ 
+} 
+
+.prev:focus, .next:focus { 
+    outline: none; /* remover contorno ao focar */ 
+}
+
+.about-us, .services {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s, transform 1s;
+}
+
+.about-us.show, .services.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #f9f9f9;
+    width: 430px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card img {
+    max-width: 400px;
+    height: 200px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card h3 {
+    color: #e07902;
+    margin: 15px 0;
+}
+
+.card p {
+    padding: 0 15px 15px 15px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    color: #670C0C;
+}
+
+footer {
+    background-color: #670C0C;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
